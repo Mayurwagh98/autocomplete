@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+body {
+    background-color: #d8f1c7;
+    /* background: rgb(231, 210, 219);
+    background: radial-gradient(circle, rgba(231, 210, 219, 1) 0%, rgba(148, 187, 233, 1) 100%); */
+}
 
 .main_div {
     width: 70%;
@@ -13,7 +17,7 @@
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     text-decoration: underline;
-    
+
 }
 
 .input_search {
@@ -32,7 +36,7 @@
 
 .input_search:focus {
     outline: none;
-    box-shadow: 0 4px 8px rgba(255, 64, 129, 0.2);
+    box-shadow: 0 4px 8px rgba(211, 40, 95, 0.5);
 }
 
 
@@ -54,6 +58,8 @@
     width: 40%;
     padding: 5px;
     /* border: 1px solid red; */
+    font-size: 17px;
+    font-weight: 600;
     border-bottom: 1px solid gray;
 }
 
@@ -106,11 +112,11 @@
 }
 
 .search_history_heading {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Garamond;
     font-size: 23px;
     font-weight: bold;
     color: #333;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    text-decoration:underline;
+    text-decoration: underline;
 }
