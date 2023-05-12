@@ -7,15 +7,26 @@ const Autocomplete = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [history, sethistory] = useState([]);
 
+  for (let word of words) {
+    history.push(word);
+  }
+
   const handleChange = (event) => {
     const value = event.target.value;
-
     setInputValue(value);
+
+    let val = 5;
+    for (let x of words) {
+      // logic for showing only 1 suggestion if word mathces instead of showing 5 suggestions
+      if (value == x) {
+        val = 1;
+      }
+    }
 
     // Filter suggestions based on input value
     const filterSuggestions = history
       .filter((query) => query.toLowerCase().includes(value.toLowerCase()))
-      .slice(0, 5);
+      .slice(0, val);
 
     setSuggestions(filterSuggestions);
   };
@@ -27,7 +38,7 @@ const Autocomplete = () => {
     });
     sethistory(randomArray);
   };
-  
+
   useEffect(() => {
     generateRandomWords();
   }, []);
