@@ -12,6 +12,8 @@
     color: #333;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration: underline;
+    
 }
 
 .input_search {
@@ -101,4 +103,14 @@
 .clear_button:active {
     background-color: #3e8e41;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.search_history_heading {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 23px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-decoration:underline;
 }

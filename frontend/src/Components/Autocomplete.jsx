@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Autocomplete.css";
+import { words } from "./words";
 
 const Autocomplete = () => {
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [history, sethistory] = useState(["dog", "did", "cat", "car", "doing"]);
+  const [history, sethistory] = useState([]);
 
-  const handleInputChange = (event) => {
+  const handleChange = (event) => {
     const value = event.target.value;
 
     setInputValue(value);
@@ -19,7 +20,19 @@ const Autocomplete = () => {
     setSuggestions(filterSuggestions);
   };
 
-  const handleFormSubmit = (event) => {
+  const generateRandomWords = () => {
+    const randomArray = words.map(() => {
+      const randomIndex = Math.floor(Math.random() * words.length);
+      return words[randomIndex];
+    });
+    sethistory(randomArray);
+  };
+  
+  useEffect(() => {
+    generateRandomWords();
+  }, []);
+
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     // Add the current input value to the search history
@@ -30,7 +43,7 @@ const Autocomplete = () => {
     setSuggestions([]);
   };
 
-  const handleSuggestionClick = (suggestion) => {
+  const handleSuggestion = (suggestion) => {
     setInputValue(suggestion);
     setSuggestions([]);
   };
@@ -42,19 +55,19 @@ const Autocomplete = () => {
 
   return (
     <div className="main_div">
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleSubmit}>
         <div style={{ position: "relative" }}>
           <h2 className="search_heading">Search Here.....</h2>
           <input
             type="text"
             value={inputValue}
-            onChange={handleInputChange}
+            onChange={handleChange}
             placeholder="Search..."
             className="input_search"
           />
           {suggestions.length > 0 && inputValue !== "" && (
             <ul className="suggestions_ul">
-              {suggestions.map((suggestion, index) => (
+              {suggestions.map((item, index) => (
                 <li
                   key={index}
                   style={{
@@ -65,10 +78,10 @@ const Autocomplete = () => {
                         ? "none"
                         : "1px solid #ccc",
                   }}
-                  onClick={() => handleSuggestionClick(suggestion)}
+                  onClick={() => handleSuggestion(item)}
                   dangerouslySetInnerHTML={{
                     // to replace the input word with suggested word
-                    __html: suggestion.replace(
+                    __html: item.replace(
                       new RegExp(`(${inputValue})`, "gi"),
                       "<mark>$1</mark>" // to mark the suggested matched word
                     ),
@@ -92,7 +105,7 @@ const Autocomplete = () => {
 
       <h3 className="search_history_heading">Search History:</h3>
       <ul>
-        {history.map((query, index) => (
+        {history.slice(0, 5).map((query, index) => (
           <li key={index} className="history_li">
             {query}
           </li>
