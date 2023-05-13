@@ -84,10 +84,14 @@ const Autocomplete = () => {
                   style={{
                     padding: "8px",
                     cursor: "pointer",
+                    margin:"0 0 0 -40px",
                     borderBottom:
                       index === suggestions.length - 1
                         ? "none"
                         : "1px solid #ccc",
+                    backgroundColor:"#FFF7D4",
+                    fontWeight:"450",
+                    fontFamily:"Comic Sans MS"
                   }}
                   onClick={() => handleSuggestion(item)}
                   dangerouslySetInnerHTML={{
